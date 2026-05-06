@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Caring Heart Health Care & Nursing Service</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rose: #e8465a;
+    --rose-light: #f9d0d6;
+    --rose-dark: #c0293d;
+    --cream: #fdf6f0;
+    --warm-white: #fff9f5;
+    --teal: #2a9d8f;
+    --teal-light: #b2ede7;
+    --gold: #f4a261;
+    --dark: #1a1020;
+    --text: #3d2b35;
+    --muted: #8a7080;
+    --card-bg: rgba(255,255,255,0.85);
+  }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 999;
+    background: rgba(253,246,240,0.92);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(232,70,90,0.12);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5vw; height: 70px;
+    animation: slideDown .6s ease;
+  }
+  @keyframes slideDown { from{transform:translateY(-100%);opacity:0} to{transform:translateY(0);opacity:1} }
+  .nav-logo {
+    display: flex; align-items: center; gap: 10px;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; font-weight: 700;
+    color: var(--rose-dark);
+    text-decoration: none;
+  }
+  .heart-icon { font-size: 1.5rem; animation: heartbeat 1.4s ease-in-out infinite; }
+  @keyframes heartbeat {
+    0%,100%{transform:scale(1)} 14%{transform:scale(1.25)} 28%{transform:scale(1)} 42%{transform:scale(1.15)} 70%{transform:scale(1)}
+  }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    text-decoration: none; color: var(--text);
+    font-size: .9rem; font-weight: 500;
+    transition: color .2s; position: relative;
+  }
+  .nav-links a::after {
+    content:''; position:absolute; bottom:-4px; left:0;
+    width:0; height:2px; background:var(--rose);
+    transition: width .3s;
+  }
+  .nav-links a:hover { color: var(--rose); }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-cta {
+    background: var(--rose); color: white !important;
+    padding: 8px 20px; border-radius: 24px;
+    font-weight: 600 !important; font-size: .85rem !important;
+    transition: background .2s, transform .2s !important;
+  }
+  .nav-cta:hover { background: var(--rose-dark) !important; transform: translateY(-2px) !important; }
+  .nav-cta::after { display: none !important; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #fff9f5 0%, #fce8ec 45%, #e8f8f6 100%);
+    display: flex; align-items: center;
+    padding: 100px 5vw 60px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -80px; right: -80px;
+    width: 500px; height: 500px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(232,70,90,0.12) 0%, transparent 70%);
+    animation: float 6s ease-in-out infinite;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; bottom: -60px; left: -60px;
+    width: 360px; height: 360px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(42,157,143,0.13) 0%, transparent 70%);
+    animation: float 8s ease-in-out infinite reverse;
+  }
+  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-30px)} }
+  .hero-content { position:relative; z-index:2; max-width:600px; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--rose-light); color: var(--rose-dark);
+    border: 1px solid rgba(232,70,90,0.25);
+    border-radius: 24px; padding: 5px 14px;
+    font-size: .78rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: .06em;
+    margin-bottom: 22px;
+    animation: fadeUp .8s .2s both;
+  }
+  .star { color: var(--gold); }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.6rem, 5vw, 4rem);
+    font-weight: 900; line-height: 1.1;
+    color: var(--dark); margin-bottom: 20px;
+    animation: fadeUp .8s .35s both;
+  }
+  .hero h1 span { color: var(--rose); }
+  .hero p {
+    font-size: 1.05rem; color: var(--muted);
+    line-height: 1.7; margin-bottom: 36px;
+    animation: fadeUp .8s .5s both;
+  }
+  .hero-actions {
+    display: flex; gap: 14px; flex-wrap: wrap;
+    animation: fadeUp .8s .65s both;
+  }
+  .btn-primary {
+    background: var(--rose); color: white;
+    padding: 14px 30px; border-radius: 30px;
+    font-weight: 600; font-size: .95rem;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+    box-shadow: 0 8px 24px rgba(232,70,90,0.35);
+    transition: transform .25s, box-shadow .25s, background .2s;
+  }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(232,70,90,0.42); background: var(--rose-dark); }
+  .btn-secondary {
+    background: white; color: var(--rose-dark);
+    padding: 14px 30px; border-radius: 30px;
+    font-weight: 600; font-size: .95rem;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+    border: 2px solid var(--rose-light);
+    transition: border-color .2s, transform .25s;
+  }
+  .btn-secondary:hover { border-color: var(--rose); transform: translateY(-3px); }
+  .hero-visual {
+    position: absolute; right: 5vw; top: 50%;
+    transform: translateY(-50%);
+    width: min(420px, 38vw);
+    animation: fadeLeft .9s .4s both;
+    z-index: 2;
+  }
+  @keyframes fadeLeft { from{opacity:0;transform:translateY(-50%) translateX(60px)} to{opacity:1;transform:translateY(-50%) translateX(0)} }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+  .hero-card {
+    background: var(--card-bg);
+    border-radius: 24px;
+    padding: 32px;
+    box-shadow: 0 20px 60px rgba(60,20,30,0.12);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.7);
+  }
+  .rating-row { display:flex; align-items:center; gap:10px; margin-bottom:16px; }
+  .stars { color: var(--gold); font-size: 1.1rem; }
+  .rating-text { font-weight:700; color:var(--dark); font-size:1.05rem; }
+  .rating-sub { color:var(--muted); font-size:.82rem; }
+  .metric-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:18px; }
+  .metric {
+    background: linear-gradient(135deg, #fff5f7, #fff);
+    border-radius: 14px; padding: 16px;
+    border: 1px solid rgba(232,70,90,0.1);
+    text-align: center;
+    transition: transform .2s;
+  }
+  .metric:hover { transform: scale(1.04); }
+  .metric-num { font-family:'Playfair Display',serif; font-size:1.7rem; font-weight:900; color:var(--rose); }
+  .metric-label { font-size:.75rem; color:var(--muted); margin-top:2px; }
+  .pulse-dot {
+    width:10px;height:10px;border-radius:50%;
+    background:var(--teal); display:inline-block; margin-right:6px;
+    box-shadow: 0 0 0 0 rgba(42,157,143,.5);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 70%{box-shadow:0 0 0 8px rgba(42,157,143,0)} 100%{box-shadow:0 0 0 0 rgba(42,157,143,0)} }
+  .available { font-size:.78rem; color:var(--teal); font-weight:600; margin-top:14px; display:flex;align-items:center; }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    background: var(--rose);
+    padding: 28px 5vw;
+    display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px;
+  }
+  .stat { text-align: center; color: white; }
+  .stat-num { font-family:'Playfair Display',serif; font-size:2rem; font-weight:900; }
+  .stat-label { font-size:.82rem; opacity:.85; margin-top:2px; }
+
+  /* ── SECTION COMMONS ── */
+  section { padding: 80px 5vw; }
+  .section-tag {
+    display:inline-block; background:var(--rose-light);
+    color:var(--rose-dark); border-radius:20px;
+    padding:4px 14px; font-size:.75rem; font-weight:700;
+    text-transform:uppercase; letter-spacing:.07em; margin-bottom:12px;
+  }
+  .section-title {
+    font-family:'Playfair Display',serif;
+    font-size:clamp(1.8rem,3.5vw,2.6rem);
+    font-weight:800; color:var(--dark); line-height:1.2;
+    margin-bottom:14px;
+  }
+  .section-title span { color:var(--rose); }
+  .section-sub { color:var(--muted); font-size:1rem; line-height:1.7; max-width:560px; }
+
+  /* ── SERVICES ── */
+  .services-bg { background: var(--warm-white); }
+  .services-header { text-align:center; margin-bottom:52px; }
+  .services-header .section-sub { margin: 0 auto; }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+  }
+  .service-card {
+    background: white;
+    border-radius: 20px;
+    padding: 30px 26px;
+    border: 1px solid rgba(232,70,90,0.08);
+    transition: transform .3s, box-shadow .3s;
+    position: relative; overflow: hidden;
+    cursor: default;
+  }
+  .service-card::before {
+    content:''; position:absolute; top:0; left:0; right:0; height:4px;
+    background: linear-gradient(90deg, var(--rose), var(--teal));
+    transform:scaleX(0); transform-origin:left;
+    transition: transform .35s;
+  }
+  .service-card:hover { transform:translateY(-8px); box-shadow:0 20px 48px rgba(60,20,30,0.12); }
+  .service-card:hover::before { transform:scaleX(1); }
+  .svc-icon {
+    width:54px; height:54px; border-radius:16px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.6rem; margin-bottom:18px;
+  }
+  .icon-rose { background:var(--rose-light); }
+  .icon-teal { background:var(--teal-light); }
+  .icon-gold { background:#fce9d4; }
+  .service-card h3 { font-family:'Playfair Display',serif; font-size:1.15rem; font-weight:700; margin-bottom:10px; }
+  .service-card p { color:var(--muted); font-size:.88rem; line-height:1.65; }
+
+  /* ── WHY US ── */
+  .why-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
+  .why-list { margin-top:30px; display:flex; flex-direction:column; gap:18px; }
+  .why-item { display:flex; gap:14px; align-items:flex-start; }
+  .why-check {
+    width:36px; height:36px; min-width:36px;
+    background:var(--rose-light); border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    color:var(--rose); font-size:.9rem; font-weight:700;
+  }
+  .why-item h4 { font-weight:600; font-size:.95rem; margin-bottom:4px; }
+  .why-item p { color:var(--muted); font-size:.85rem; line-height:1.6; }
+  .why-visual {
+    background: linear-gradient(145deg, #fce8ec, #e8f8f6);
+    border-radius: 28px; padding: 40px;
+    display: flex; flex-direction:column; gap:16px;
+    box-shadow: 0 16px 50px rgba(60,20,30,0.09);
+  }
+  .care-feature {
+    background: white; border-radius: 16px; padding: 18px 20px;
+    display: flex; align-items:center; gap:14px;
+    box-shadow: 0 4px 16px rgba(60,20,30,0.06);
+    transition: transform .25s;
+  }
+  .care-feature:hover { transform:translateX(8px); }
+  .cf-icon { font-size:1.5rem; }
+  .cf-text h5 { font-weight:600; font-size:.9rem; }
+  .cf-text p { color:var(--muted); font-size:.8rem; }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials-bg { background:linear-gradient(135deg, #fff9f5, #fce8ec 60%, #e8f8f6); }
+  .testimonials-header { text-align:center; margin-bottom:50px; }
+  .testimonials-header .section-sub { margin:0 auto; }
+  .testi-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:22px; }
+  .testi-card {
+    background:white; border-radius:20px; padding:28px;
+    box-shadow:0 8px 28px rgba(60,20,30,0.07);
+    transition:transform .3s;
+    position:relative;
+  }
+  .testi-card:hover { transform:translateY(-6px); }
+  .quote-mark { font-family:'Playfair Display',serif; font-size:4rem; color:var(--rose-light); line-height:.8; margin-bottom:8px; }
+  .testi-text { color:var(--text); font-size:.9rem; line-height:1.7; margin-bottom:20px; }
+  .testi-author { display:flex; align-items:center; gap:12px; }
+  .author-av {
+    width:42px; height:42px; border-radius:50%;
+    background:linear-gradient(135deg,var(--rose),var(--teal));
+    display:flex; align-items:center; justify-content:center;
+    color:white; font-weight:700; font-size:.9rem;
+  }
+  .author-name { font-weight:600; font-size:.88rem; }
+  .author-role { color:var(--muted); font-size:.76rem; }
+  .testi-stars { color:var(--gold); font-size:.8rem; margin-bottom:14px; }
+
+  /* ── CONTACT ── */
+  .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start; }
+  .contact-info { display:flex; flex-direction:column; gap:22px; margin-top:28px; }
+  .contact-item {
+    display:flex; gap:14px; align-items:flex-start;
+    background:white; border-radius:16px; padding:18px 20px;
+    box-shadow:0 4px 16px rgba(60,20,30,0.06);
+    border: 1px solid rgba(232,70,90,0.08);
+    transition: transform .2s;
+  }
+  .contact-item:hover { transform:translateX(6px); }
+  .ci-icon {
+    width:44px;height:44px;min-width:44px; border-radius:12px;
+    background:var(--rose-light); display:flex; align-items:center;
+    justify-content:center; font-size:1.2rem;
+  }
+  .ci-text h4 { font-weight:600; font-size:.9rem; margin-bottom:3px; }
+  .ci-text p, .ci-text a { color:var(--muted); font-size:.85rem; text-decoration:none; }
+  .ci-text a:hover { color:var(--rose); }
+  .contact-form {
+    background:white; border-radius:24px; padding:36px;
+    box-shadow:0 12px 40px rgba(60,20,30,0.08);
+    border:1px solid rgba(232,70,90,0.08);
+  }
+  .contact-form h3 { font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:700; margin-bottom:22px; }
+  .form-group { margin-bottom:16px; }
+  .form-group label { display:block; font-size:.82rem; font-weight:600; margin-bottom:6px; color:var(--text); }
+  .form-group input, .form-group textarea, .form-group select {
+    width:100%; padding:12px 14px;
+    border:1.5px solid rgba(232,70,90,0.15);
+    border-radius:12px; font-family:inherit; font-size:.9rem;
+    background:var(--cream); color:var(--text);
+    outline:none; transition:border-color .2s;
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color:var(--rose); }
+  .form-group textarea { resize:vertical; min-height:100px; }
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .btn-submit {
+    width:100%; background:var(--rose); color:white;
+    border:none; padding:14px; border-radius:14px;
+    font-family:inherit; font-size:1rem; font-weight:600;
+    cursor:pointer; margin-top:6px;
+    transition:background .2s, transform .2s;
+  }
+  .btn-submit:hover { background:var(--rose-dark); transform:translateY(-2px); }
+
+  /* ── FOOTER ── */
+  footer {
+    background:var(--dark);
+    color:rgba(255,255,255,.75);
+    padding:52px 5vw 28px;
+  }
+  .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr; gap:48px; margin-bottom:40px; }
+  .footer-brand .nav-logo { color:white; font-size:1.25rem; margin-bottom:14px; display:inline-flex; }
+  .footer-brand p { font-size:.85rem; line-height:1.7; max-width:280px; }
+  .footer-col h4 { color:white; font-weight:600; margin-bottom:16px; font-size:.92rem; }
+  .footer-col ul { list-style:none; display:flex; flex-direction:column; gap:10px; }
+  .footer-col ul li a { color:rgba(255,255,255,.6); text-decoration:none; font-size:.85rem; transition:color .2s; }
+  .footer-col ul li a:hover { color:var(--rose-light); }
+  .footer-bottom {
+    border-top:1px solid rgba(255,255,255,.1);
+    padding-top:22px; display:flex; justify-content:space-between;
+    align-items:center; flex-wrap:wrap; gap:10px;
+    font-size:.8rem;
+  }
+  .footer-bottom a { color:var(--rose-light); text-decoration:none; }
+
+  /* ── FLOATING CTA ── */
+  .float-call {
+    position:fixed; bottom:24px; right:24px; z-index:998;
+    background:var(--rose); color:white;
+    width:58px; height:58px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.4rem; text-decoration:none;
+    box-shadow:0 8px 24px rgba(232,70,90,0.45);
+    animation:bounceIn .6s 1.2s both;
+    transition:transform .2s;
+  }
+  .float-call:hover { transform:scale(1.12); }
+  @keyframes bounceIn { from{opacity:0;transform:scale(.4)} 80%{transform:scale(1.12)} to{opacity:1;transform:scale(1)} }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal { opacity:0; transform:translateY(40px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.visible { opacity:1; transform:translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:900px){
+    .hero-visual { display:none; }
+    .why-grid, .contact-grid { grid-template-columns:1fr; gap:36px; }
+    .footer-grid { grid-template-columns:1fr 1fr; }
+    .nav-links { display:none; }
+  }
+  @media(max-width:600px){
+    .footer-grid { grid-template-columns:1fr; }
+    .form-row { grid-template-columns:1fr; }
+    .hero { padding:100px 5vw 50px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <span class="heart-icon">❤️</span>
+    Caring Heart
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="tel:+916379307331" class="nav-cta">📞 Call Now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="star">★★★★★</span> 5.0 Rating · Chennai, Tamil Nadu
+    </div>
+    <h1>Your Health is Our <span>Caring</span> Priority</h1>
+    <p>Caring Heart Health Care & Nursing Service brings compassionate, professional, and holistic alternative medicine care right to your doorstep in Chennai. Trusted by families across Tamil Nadu.</p>
+    <div class="hero-actions">
+      <a href="tel:+916379307331" class="btn-primary">📞 Book Appointment</a>
+      <a href="#services" class="btn-secondary">Our Services →</a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-card">
+      <div class="rating-row">
+        <div>
+          <div class="stars">★★★★★</div>
+          <div style="display:flex;align-items:center;gap:8px;margin-top:4px">
+            <span class="rating-text">5.0</span>
+            <span class="rating-sub">Perfect Rating</span>
+          </div>
+        </div>
+      </div>
+      <p style="font-size:.85rem;color:var(--muted);line-height:1.6;border-top:1px solid #f0e8ea;padding-top:14px;">
+        "Exceptional nursing care with deep compassion. Our family is truly grateful for the dedicated service."
+      </p>
+      <div class="metric-grid">
+        <div class="metric"><div class="metric-num">500+</div><div class="metric-label">Happy Patients</div></div>
+        <div class="metric"><div class="metric-num">24/7</div><div class="metric-label">Availability</div></div>
+        <div class="metric"><div class="metric-num">10+</div><div class="metric-label">Years Care</div></div>
+        <div class="metric"><div class="metric-num">100%</div><div class="metric-label">Commitment</div></div>
+      </div>
+      <div class="available"><span class="pulse-dot"></span> Available Now — Chennai & Surroundings</div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">500+</div><div class="stat-label">Patients Served</div></div>
+  <div class="stat"><div class="stat-num">5.0 ★</div><div class="stat-label">Google Rating</div></div>
+  <div class="stat"><div class="stat-num">24/7</div><div class="stat-label">Care Available</div></div>
+  <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Compassionate Care</div></div>
+</div>
+
+<!-- SERVICES -->
+<section class="services-bg" id="services">
+  <div class="services-header reveal">
+    <div class="section-tag">What We Offer</div>
+    <h2 class="section-title">Our <span>Care</span> Services</h2>
+    <p class="section-sub">From home nursing to alternative medicine, we offer a wide range of compassionate healthcare services tailored to your needs.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="svc-icon icon-rose">🏠</div>
+      <h3>Home Nursing Care</h3>
+      <p>Professional nurses visit your home to provide post-operative care, wound dressing, medication management, and daily health monitoring.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="svc-icon icon-teal">🌿</div>
+      <h3>Alternative Medicine</h3>
+      <p>Holistic healing treatments including naturopathy, acupressure, and herbal therapy to complement modern medical care.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="svc-icon icon-gold">👴</div>
+      <h3>Elder Care Services</h3>
+      <p>Compassionate support for senior citizens with daily activities, personal hygiene, nutrition monitoring, and companionship.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="svc-icon icon-rose">💉</div>
+      <h3>Injection & IV Therapy</h3>
+      <p>Safe and sterile administration of injections, intravenous fluids, and other prescribed medical procedures at home.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="svc-icon icon-teal">🫀</div>
+      <h3>Vital Monitoring</h3>
+      <p>Regular monitoring of blood pressure, blood sugar, oxygen saturation, and other critical health parameters.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="svc-icon icon-gold">🧘</div>
+      <h3>Rehabilitation Care</h3>
+      <p>Physiotherapy assistance and recovery support for stroke, fractures, and post-surgical rehabilitation programs.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="why-grid">
+    <div class="reveal">
+      <div class="section-tag">Why Choose Us</div>
+      <h2 class="section-title">Caring with <span>Heart & Soul</span></h2>
+      <p class="section-sub">We're not just a health service — we're a family of caregivers committed to your complete well-being.</p>
+      <div class="why-list">
+        <div class="why-item">
+          <div class="why-check">✓</div>
+          <div>
+            <h4>Certified & Experienced Nurses</h4>
+            <p>All our nurses are RN/GNM certified with years of clinical and home care experience.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-check">✓</div>
+          <div>
+            <h4>Personalised Care Plans</h4>
+            <p>Every patient receives a customised care plan based on their unique medical and personal needs.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-check">✓</div>
+          <div>
+            <h4>24/7 Emergency Support</h4>
+            <p>Round-the-clock availability ensures you're never alone during medical emergencies.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-check">✓</div>
+          <div>
+            <h4>Affordable & Transparent Pricing</h4>
+            <p>Quality healthcare doesn't have to be expensive. We offer fair and transparent pricing with no hidden costs.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="why-visual reveal">
+      <div class="care-feature">
+        <span class="cf-icon">🏆</span>
+        <div class="cf-text"><h5>5-Star Rated Service</h5><p>Consistently rated 5.0 on Google Reviews</p></div>
+      </div>
+      <div class="care-feature">
+        <span class="cf-icon">📍</span>
+        <div class="cf-text"><h5>Chennai & Nearby Areas</h5><p>Serving all zones across Chennai, Tamil Nadu</p></div>
+      </div>
+      <div class="care-feature">
+        <span class="cf-icon">🩺</span>
+        <div class="cf-text"><h5>Doctor Coordination</h5><p>We coordinate directly with your treating physician</p></div>
+      </div>
+      <div class="care-feature">
+        <span class="cf-icon">💊</span>
+        <div class="cf-text"><h5>Medication Management</h5><p>Timely reminders and proper administration</p></div>
+      </div>
+      <div class="care-feature">
+        <span class="cf-icon">🤝</span>
+        <div class="cf-text"><h5>Family Communication</h5><p>Regular updates to family members and caregivers</p></div>
+      </div>
+      <div style="text-align:center;margin-top:10px">
+        <a href="tel:+916379307331" class="btn-primary" style="display:inline-flex;font-size:.9rem;">📞 063793 07331</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-bg" id="testimonials">
+  <div class="testimonials-header reveal">
+    <div class="section-tag">Patient Stories</div>
+    <h2 class="section-title">Voices of <span>Trust</span></h2>
+    <p class="section-sub">Hear from the families and patients who have experienced the warmth and professionalism of our care.</p>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card reveal">
+      <div class="quote-mark">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">The nurses from Caring Heart were absolutely wonderful with my mother after her surgery. They were punctual, kind, and incredibly skilled. I couldn't have managed without them.</p>
+      <div class="testi-author">
+        <div class="author-av">R</div>
+        <div><div class="author-name">Rajeshwari M.</div><div class="author-role">Patient's Daughter · Chennai</div></div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="quote-mark">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">Their alternative medicine approach really helped my father manage his chronic pain without side effects. The practitioner was knowledgeable, patient, and genuinely caring.</p>
+      <div class="testi-author">
+        <div class="author-av">A</div>
+        <div><div class="author-name">Arun Kumar S.</div><div class="author-role">Son of Patient · Chennai</div></div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="quote-mark">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">24/7 availability is a blessing. I called at midnight during an emergency and they responded immediately. Professional, compassionate service that I wholeheartedly recommend.</p>
+      <div class="testi-author">
+        <div class="author-av">P</div>
+        <div><div class="author-name">Priya Lakshmi</div><div class="author-role">Patient · Tamil Nadu</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-grid">
+    <div>
+      <div class="section-tag reveal">Get In Touch</div>
+      <h2 class="section-title reveal">Ready to <span>Care</span> for You</h2>
+      <p class="section-sub reveal">Reach out today. Whether it's a planned home visit or an urgent care need, we're here for you.</p>
+      <div class="contact-info">
+        <div class="contact-item reveal">
+          <div class="ci-icon">📞</div>
+          <div class="ci-text">
+            <h4>Phone / WhatsApp</h4>
+            <a href="tel:+916379307331">063793 07331</a>
+          </div>
+        </div>
+        <div class="contact-item reveal">
+          <div class="ci-icon">📍</div>
+          <div class="ci-text">
+            <h4>Location</h4>
+            <p>Chennai, Tamil Nadu, India</p>
+          </div>
+        </div>
+        <div class="contact-item reveal">
+          <div class="ci-icon">🕐</div>
+          <div class="ci-text">
+            <h4>Availability</h4>
+            <p>24 hours a day · 7 days a week</p>
+          </div>
+        </div>
+        <div class="contact-item reveal">
+          <div class="ci-icon">⭐</div>
+          <div class="ci-text">
+            <h4>Google Rating</h4>
+            <p>5.0 Stars — Alternative Medicine Practitioner</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form reveal">
+      <h3>Book a Home Visit</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" placeholder="Your name">
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="+91 XXXXX XXXXX">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Service Required</label>
+        <select>
+          <option>Home Nursing Care</option>
+          <option>Alternative Medicine</option>
+          <option>Elder Care</option>
+          <option>Injection / IV Therapy</option>
+          <option>Vital Monitoring</option>
+          <option>Rehabilitation Care</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Address / Area</label>
+        <input type="text" placeholder="Your area in Chennai">
+      </div>
+      <div class="form-group">
+        <label>Message (Optional)</label>
+        <textarea placeholder="Tell us about the patient's condition or any special requirements..."></textarea>
+      </div>
+      <button class="btn-submit" onclick="this.textContent='✓ Request Sent! We\'ll Call You Soon'; this.style.background='var(--teal)';">📋 Request Appointment</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo">
+        <span class="heart-icon">❤️</span> Caring Heart
+      </a>
+      <p>Caring Heart Health Care & Nursing Service — Alternative Medicine Practitioner in Chennai, Tamil Nadu. Dedicated to holistic, compassionate healthcare since day one.</p>
+      <br>
+      <a href="tel:+916379307331" style="color:var(--rose-light);font-size:.9rem;font-weight:600;">📞 063793 07331</a>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#why">Why Choose Us</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Home Nursing</a></li>
+        <li><a href="#services">Alternative Medicine</a></li>
+        <li><a href="#services">Elder Care</a></li>
+        <li><a href="#services">IV Therapy</a></li>
+        <li><a href="#services">Rehabilitation</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Caring Heart Health Care & Nursing Service. All rights reserved.</span>
+    <span>Made with ❤️ in Chennai, Tamil Nadu</span>
+  </div>
+</footer>
+
+<!-- FLOATING CALL BUTTON -->
+<a href="tel:+916379307331" class="float-call" title="Call Now">📞</a>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
